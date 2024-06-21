@@ -1,0 +1,18 @@
+DROP TABLE IF EXISTS language_prog;
+DROP TABLE IF EXISTS creator;
+
+
+CREATE TABLE creator(
+	id_creator SERIAL CONSTRAINT pk_creator PRIMARY KEY,
+	name_creator VARCHAR(45) NOT NULL,
+	lasname_creator VARCHAR(45) NOT NULL,
+	dateborn_creator DATE
+);
+
+CREATE TABLE language_prog(
+	id_language SERIAL CONSTRAINT pk_language PRIMARY KEY,
+	name_language VARCHAR(45) NOT NULL,
+	datecreation_language DATE,
+	creator_language INT NOT NULL,
+	CONSTRAINT fk_creator FOREIGN KEY(creator_language) REFERENCES creator(id_creator)
+);
